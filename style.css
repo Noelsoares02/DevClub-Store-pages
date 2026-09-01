@@ -1,35 +1,139 @@
 @charset "UTF-8";
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    list-style: none;
-    font-family: "Montserrat", sans-serif;
+
+/* ==============================
+RESET
+================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  font-family: "Montserrat", sans-serif;
+  }
+
+/* ==============================
+BODY
+================================= */
+
+body {
+background-color: #0f0f1e;
+color: white;
+overflow: hidden;
+font-size: 16px;
 }
-body{
-    background-color: #0f0f1e;
-    color: white;
-    overflow: hidden;
-    font-size: 16px;
+
+/* ==============================
+HEADER
+================================= */
+
+header {
+position: fixed;
+width: 100%;
+top: 0;
+left: 0;
+
+padding: 20px 50px;
+
+display: flex;
+justify-content: space-between;
+align-items: center;
+
+z-index: 3;
+
+
 }
-header{
-    position: fixed;
-    width: 90vw;
-    top: 0;
-    padding:20px 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 3;
-}
+
+/* ==============================
+LOGO
+================================= */
+
 .logo {
-    font-family: "Orbitron", sans-serif;
-    font-size: 2rem;
-    font-weight: 900;
-    text-shadow:  0 0 10px rgba(0,247,255,0.5);
+font-family: "Orbitron", sans-serif;
+font-size: 2rem;
+font-weight: 900;
+
+
+text-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
+
+
 }
+
+/* ==============================
+MENU
+================================= */
+
+header nav ul {
+display: flex;
+gap: 48px;
+}
+
+header nav ul li {
+position: relative;
+cursor: pointer;
+padding: 5px 0;
+}
+
+header nav ul li a {
+color: white;
+text-decoration: none;
+font-weight: 500;
+
+`
+transition: color 0.3s ease;
+`
+
+}
+
+/* Linha abaixo do menu */
+
+header nav ul li::after {
+content: "";
+
+position: absolute;
+left: 0;
+bottom: 0;
+
+width: 0;
+height: 2px;
+
+background-color: #00f7ff;
+
+box-shadow: 0 0 8px #00f7ff;
+
+transition: width 0.3s ease;
+
+}
+
+/* Efeito hover */
+
+header nav ul li:hover::after {
+width: 100%;
+}
+
+header nav ul li:hover a {
+color: #00f7ff;
+}
+
+/* ==============================
+IMAGENS DOS PRODUTOS
+================================= */
+
 .product-img img {
-    width: 300px;
-    height: 300px;
-    object-fit: contain;
+width: 300px;
+height: 300px;
+
+
+object-fit: contain;
+
+
+}
+.dot {
+    width: 40px;
+    height: 4px;
+    background-color: rgba(255, 255,255,0.2)
+    border-radius:2px;
+}
+.dot.active {
+    box-shadow:  0 0 10px rgba(0,247,255,0.5)
 }
