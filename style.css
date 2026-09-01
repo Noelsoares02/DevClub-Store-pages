@@ -1,3 +1,4 @@
+
 @charset "UTF-8";
 
 /* ==============================
@@ -77,8 +78,6 @@ header nav ul li a {
     transition: color 0.3s ease;
 }
 
-/* Linha abaixo do menu */
-
 header nav ul li::after {
     content: "";
 
@@ -95,8 +94,6 @@ header nav ul li::after {
 
     transition: width 0.3s ease;
 }
-
-/* Efeito hover */
 
 header nav ul li:hover::after {
     width: 100%;
@@ -125,12 +122,15 @@ CONTAINER
     overflow: hidden;
 }
 
-/* Efeito luminoso central */
+/* ==============================
+EFEITO LUMINOSO
+================================= */
 
 .container::before {
     content: "";
 
     position: absolute;
+
     top: 50%;
     left: 50%;
 
@@ -168,7 +168,7 @@ CONTAINER
 }
 
 /* ==============================
-LISTA DE PRODUTOS
+LISTA
 ================================= */
 
 .list {
@@ -186,26 +186,25 @@ ITEM
 
 .item {
     position: absolute;
+
     inset: 0;
 
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 
     gap: 50px;
 
     opacity: 0;
 
-    transform: translateX(100px);
-
-    pointer-events: none;
+    transform: translateX(100vw);
 
     transition:
         opacity 0.6s ease,
-        transform 0.6s ease;
-}
+        transform 0.6s ease-in-out;
 
-/* Produto ativo */
+    pointer-events: none;
+}
 
 .item.active {
     opacity: 1;
@@ -218,7 +217,7 @@ ITEM
 }
 
 /* ==============================
-IMAGEM DO PRODUTO
+IMAGEM
 ================================= */
 
 .product-img {
@@ -236,6 +235,7 @@ IMAGEM DO PRODUTO
 
 .product-img img {
     width: 100%;
+
     max-width: 550px;
     max-height: 500px;
 
@@ -247,13 +247,23 @@ IMAGEM DO PRODUTO
         0 0 30px rgba(0, 247, 255, 0.3)
     );
 
-    transform: scale(1.05);
+    transform: translateX(400px) scale(1);
 
-    transition: transform 0.5s ease;
+    opacity: 0;
+
+    transition:
+        transform 0.7s ease,
+        opacity 0.5s ease;
+
+    transition-delay: 0.2s;
 }
 
+/* Imagem do slide ativo */
+
 .item.active .product-img img {
-    transform: scale(1.15);
+    transform: translateX(0) scale(1.15);
+
+    opacity: 1;
 }
 
 /* ==============================
@@ -268,8 +278,11 @@ CONTEÚDO
     padding-right: 80px;
 
     display: flex;
+
     align-items: flex-start;
+
     justify-content: center;
+
     flex-direction: column;
 
     z-index: 2;
@@ -297,8 +310,10 @@ TAG
     transform: translateY(20px);
 
     transition:
-        opacity 0.5s ease 0.2s,
-        transform 0.5s ease 0.2s;
+        opacity 0.5s ease,
+        transform 0.5s ease;
+
+    transition-delay: 0.2s;
 }
 
 .item.active .product-tag {
@@ -319,6 +334,22 @@ NOME DO PRODUTO
     line-height: 1.1;
 
     margin-bottom: 20px;
+
+    opacity: 0;
+
+    transform: translateX(400px);
+
+    transition:
+        transform 0.6s ease,
+        opacity 0.6s ease;
+
+    transition-delay: 0.3s;
+}
+
+.item.active .product-name {
+    opacity: 1;
+
+    transform: translateX(0);
 }
 
 /* ==============================
@@ -332,9 +363,25 @@ DESCRIÇÃO
 
     color: #b8b8d0;
 
-    line-height: 1.5;
+    line-height: 1.6;
 
     margin-bottom: 30px;
+
+    opacity: 0;
+
+    transform: translateX(400px);
+
+    transition:
+        transform 0.6s ease,
+        opacity 0.6s ease;
+
+    transition-delay: 0.4s;
+}
+
+.item.active .description {
+    opacity: 1;
+
+    transform: translateX(0);
 }
 
 /* ==============================
@@ -365,6 +412,20 @@ BOTÃO
     transition:
         transform 0.3s ease,
         box-shadow 0.3s ease;
+        transform: translateX(400px);
+
+    transition:
+        transform 0.6s ease,
+        opacity 0.6s ease;
+
+    transition-delay: 0.4s;
+}
+
+.item.active .description {
+    opacity: 1;
+
+    transform: translateX(0);
+}
 }
 
 .btn:hover {
@@ -389,6 +450,7 @@ SETAS
     transform: translate(-50%, -50%);
 
     display: flex;
+
     justify-content: space-between;
 
     z-index: 5;
@@ -409,7 +471,9 @@ SETAS
     color: white;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     cursor: pointer;
@@ -439,8 +503,8 @@ INDICADORES
 .indicators {
     position: absolute;
 
-    bottom: 40px;
     left: 50%;
+    bottom: 30px;
 
     transform: translateX(-50%);
 
@@ -450,31 +514,44 @@ INDICADORES
 
     gap: 15px;
 
-    z-index: 5;
+    z-index: 20;
 }
 
 .numbers {
+    display: block;
+
     font-family: "Orbitron", sans-serif;
 
     font-size: 3rem;
 
-    color: rgba(255, 255, 255, 0.2);
-
     font-weight: 600;
+
+    color: #ffffff;
+
+    line-height: 1;
+
+    opacity: 1;
 }
 
 .dots {
     display: flex;
-    gap: 20px;
+
+    align-items: center;
+
+    gap: 15px;
 }
 
 .dot {
+    display: block;
+
     width: 40px;
-    height: 4px;
+    height: 5px;
 
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.4);
 
-    border-radius: 2px;
+    border-radius: 5px;
+
+    cursor: pointer;
 
     transition: all 0.3s ease;
 }
@@ -482,10 +559,8 @@ INDICADORES
 .dot.active {
     background-color: #00f7ff;
 
-    box-shadow:
-        0 0 10px rgba(0, 247, 255, 0.5);
+    box-shadow: 0 0 10px #00f7ff;
 }
-
 /* ==============================
 CÍRCULOS DECORATIVOS
 ================================= */

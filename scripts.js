@@ -2,7 +2,7 @@ const prevButton = document.getElementById('prev');
 const nextButton = document.getElementById('next');
 const items = document.querySelectorAll('.item');
 const dots = document.querySelectorAll('.dot');
-const numbersIndicators = document.querySelectorAll('.numbers');
+const numbersIndicator = document.querySelector('.numbers');
 const list = document.querySelector('.list');
 
 let active = 0;
@@ -29,7 +29,15 @@ function update(direction) {
 }
     items[active].classList.add('active');
     dots[active].classList.add('active');
+
+    numbersIndicator.textContent =
+    String(active + 1).padStart(2, '0');
 }
+
+    clearInterval(timer)
+    timer = setInterval(() => {
+        update(1)
+    }, 5000);
 
 prevButton.addEventListener('click', () => {
     update(-1)
